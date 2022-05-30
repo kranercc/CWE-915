@@ -1,5 +1,41 @@
 # CWE-915
 CWE-915 FIXED
+=====================================================================
+Proxmox VE 3/4 Insecure Hostname Checking (Remote Root Exploit, XSS,
+Privileges escalation)
+=====================================================================
+
+Description
+===========
+
+Proxmox is a popular virtualization solution based on KVM and Linux
+containers.
+
+A critical vulnerability has been found in Proxmox VE 3 (OpenVZ) and
+Proxmox VE 4 beta 1 (LXC) in the
+virtual machine creating form allowing authenticated remote users to
+overwrite configuration files settings.
+
+
+Configuration file overwriting
+==============================
+
+Because the Proxmox VE application doesn't check the
+user-provided "hostname" POST parameter, it's
+possible to overwrite configuration files using a CRLF injection.
+In Proxmox VE 3, we successfully gained access to the host filesystem
+from a container and elevated our container capabilities, allowing us to
+obtain user credentials and sniff the network.
+In Proxmox VE 4b1, because LXC allows "hooks" to execute commands, we
+successfully gained root privileges on the host.
+It's also possible to exploit Proxmox clusters.
+
+**Access Vector**: remote
+
+**Security Risk**: high
+
+**Vulnerability**: CWE-915
+
 
 # CODE
 ```python
