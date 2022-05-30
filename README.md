@@ -1,4 +1,3 @@
-# CWE-915
 CWE-915 FIXED
 =====================================================================
 Proxmox VE 3/4 Insecure Hostname Checking (Remote Root Exploit, XSS,
